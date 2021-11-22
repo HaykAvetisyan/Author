@@ -1,7 +1,7 @@
 package AuthorMain;
 
 
-import static AuthorMain.AuthorBookTest.scanner;
+
 
 public class AuthorStorage {
     private Author[] authors = new Author[16];
@@ -53,23 +53,5 @@ public class AuthorStorage {
         return null;
     }
 
-    public void changeAuthor(String email) {
 
-    }
-
-    public void editAuthor(Author author) {
-        System.out.println("please input author's name");
-        String name = scanner.nextLine();
-        System.out.println("please input author's surname");
-        String surname = scanner.nextLine();
-        System.out.println("please input author's gender");
-        String gender = scanner.nextLine();
-        System.out.println("please input author's age");
-        int age = Integer.parseInt(scanner.nextLine());
-        author.setName(name);
-        author.setSurname(surname);
-        author.setAge(age);
-        author.setGender(gender);
-        System.out.println("Thank you, the author was changed");
-    }
 }

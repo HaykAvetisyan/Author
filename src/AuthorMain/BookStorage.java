@@ -41,11 +41,13 @@ public class BookStorage {
     }
 
     public void searchByCountAuthorEmail(String email) {
-
+        int count = 0;
         for (int i = 0; i <size; i++) {
             if(books[i].getAuthor().getEmail().equals(email)){
                 System.out.println(books[i].getCount());
+                count++;
             }
+            System.out.println(count);
 
         }
 
