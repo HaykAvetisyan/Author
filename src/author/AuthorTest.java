@@ -6,7 +6,10 @@ public class AuthorTest {
     public static void main(String[] args) {
         System.out.println("How many authors we have?");
         Scanner sc = new Scanner(System.in);
+
         int response = Integer.parseInt(sc.next());
+
+
         AuthorStorage au = new AuthorStorage();
 
         for (int i = 0; i < response ; i++) {

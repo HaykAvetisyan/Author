@@ -5,12 +5,11 @@ public class AuthorStorage {
     private int size = 0;
 
     public void add(Author author) {
-        size++;
 
         if (size == array.length) {
             extend();
         }
-        array[size-1] = author;
+        array[size++] = author;
     }
 
 

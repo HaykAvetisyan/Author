@@ -15,6 +15,7 @@ public class Test {
     private static final String ADD_BOOK = "5";
     private static final String PRINT_BOOK = "6";
     private static final String SEARCH_BOOKS_BY_TITLE = "7";
+    private static final String SEARCH_BOOKS_BY_PRICE = "8";
 
     public static void main(String[] args) {
 
@@ -44,7 +45,6 @@ public class Test {
                     break;
 
 
-
                 case ADD_BOOK:
                     addBook();
                     break;
@@ -54,11 +54,22 @@ public class Test {
                 case SEARCH_BOOKS_BY_TITLE:
                     searchBookbyTitle();
                     break;
+                case SEARCH_BOOKS_BY_PRICE:
+                    searchBookbyPrice();
+                    break;
                 default:
                     System.out.println("invalid command!");
             }
 
         }
+    }
+
+    private static void searchBookbyPrice() {
+        System.out.println("Please input min price");
+        int minPrice = Integer.parseInt(scanner.nextLine());
+        System.out.println("Please input max price");
+        int maxPrice = Integer.parseInt(scanner.nextLine());
+        bookStorage.searchBookByPrice(minPrice,maxPrice);
     }
 
     private static void searchBookbyTitle() {
@@ -75,23 +86,18 @@ public class Test {
         String description = scanner.nextLine();
 
 
-
         System.out.println("please input book's price");
         double price = Double.parseDouble(scanner.nextLine());
 
         System.out.println("please input book's count");
         int count = Integer.parseInt(scanner.nextLine());
 
-        Book book = new Book(title,description,price,count);
+        Book book = new Book(title, description, price, count);
 
 
         bookStorage.add(book);
         System.out.println("Thank you! Book was add");
     }
-
-
-
-
 
 
     private static void printCommands() {
@@ -103,6 +109,7 @@ public class Test {
         System.out.println("Please input " + ADD_BOOK + " for ADD_BOOK");
         System.out.println("Please input " + PRINT_BOOK + " for PRINT_BOOKS");
         System.out.println("Please input " + SEARCH_BOOKS_BY_TITLE + " for SEARCH_BOOKS_BY_TITLE");
+        System.out.println("Please input " + SEARCH_BOOKS_BY_PRICE + " for SEARCH_BOOKS_BY_PRICE");
     }
 
     private static void searchAuthorByAge() {
