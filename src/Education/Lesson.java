@@ -3,7 +3,7 @@ package Education;
 import java.util.Objects;
 
 public class Lesson {
-    private String  name;
+    private String name;
     private String lectureName;
     private int duration;
     private double price;
@@ -41,7 +41,6 @@ public class Lesson {
     public void setDuration(int duration) {
         this.duration = duration;
     }
-
 
 
     public double getPrice() {

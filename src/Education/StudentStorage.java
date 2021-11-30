@@ -28,7 +28,7 @@ public class StudentStorage {
 
     public Student getByEmail(String email) {
         for (int i = 0; i < size; i++) {
-            if(students[i].getEmail().equals(email)){
+            if (students[i].getEmail().equals(email)) {
                 return students[i];
             }
         }
@@ -37,24 +37,27 @@ public class StudentStorage {
 
     public void getStudentByLesson(String title) {
         for (int i = 0; i < size; i++) {
-            if(students[i].getLesson().getName().equals(title)){
-                System.out.println(students[i]);
+            int length = students[i].getLessons().length;
+            for (int j = 0; j <length ; j++) {
+                if(students[i].getLessons()[j].getName().equals(title)){
+                    System.out.println(students[i]);
+                }
             }
         }
     }
 
     public void delete(Student student) {
         for (int i = getIndex(student); i < size; i++) {
-            students[i] = students[i+1];
+            students[i] = students[i + 1];
             size--;
 
         }
 
     }
 
-    private int getIndex(Student student){
+    private int getIndex(Student student) {
         for (int i = 0; i < size; i++) {
-            if (students[i].equals(student)){
+            if (students[i].equals(student)) {
                 return i;
             }
         }

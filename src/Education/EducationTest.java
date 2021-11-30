@@ -58,7 +58,6 @@ public class EducationTest {
     }
 
 
-
     private static void addLesson() {
         System.out.println("please input lesson's title");
         String title = scanner.nextLine();
@@ -73,12 +72,11 @@ public class EducationTest {
         System.out.println("please input lesson's price");
         double price = Double.parseDouble(scanner.nextLine());
 
-        if(lessonStorage.getLessonByTitle(title) == null){
-            Lesson lesson = new Lesson(title,lectoreName,duration,price);
+        if (lessonStorage.getLessonByTitle(title) == null) {
+            Lesson lesson = new Lesson(title, lectoreName, duration, price);
             lessonStorage.add(lesson);
             System.out.println("Thank you the lesson was added!!!");
-        }
-        else {
+        } else {
             System.out.println("Lesson with that name already exist");
             addLesson();
         }
@@ -86,53 +84,46 @@ public class EducationTest {
     }
 
 
-    private static void addStudent(){
+    private static void addStudent() {
         System.out.println("please input student's name");
         String name = scanner.nextLine();
-
         System.out.println("please input student's surname");
-        String surName = scanner.nextLine();
-
-
+        String surname = scanner.nextLine();
         System.out.println("please input student's age");
         int age = Integer.parseInt(scanner.nextLine());
-
-        System.out.println("please input student's phone number");
-        String phoneNumber = scanner.nextLine();
-
         System.out.println("please input student's email");
         String email = scanner.nextLine();
+        System.out.println("please input student's phone");
+        String phone = scanner.nextLine();
+        System.out.println("please input student's lesson names");
+        String nameOfLessons = scanner.nextLine();
 
-        System.out.println("And finally type title for a lesson");
-        String title = scanner.nextLine();
-
-        if(studentStorage.getByEmail(email)==null){
-            if (lessonStorage.getLessonByTitle(title)!=null){
-                Student student = new Student(name,surName,age,phoneNumber,email,lessonStorage.getLessonByTitle(title));
-                studentStorage.add(student);
+        if (studentStorage.getByEmail(email) == null) {
+            String[] names = nameOfLessons.split(",");
+            Lesson[] lessons = new Lesson[names.length];
+            for (int i = 0; i < lessons.length; i++) {
+                if (lessonStorage.getLessonByTitle(names[i]) == null) {
+                    System.out.println("Lesson with that name is not exist");
+                } else {
+                    lessons[i] = lessonStorage.getLessonByTitle(names[i]);
+                }
             }
-            else {
-                System.out.println("We don't have such a lesson");
-                addStudent();
-            }
-        }
-        else {
-            System.out.println("Student with that email already exist");
-            addStudent();
+            Student student = new Student(name, surname, age, email, phone, lessons);
+            studentStorage.add(student);
+            System.out.println("student added");
+        } else {
+            System.out.println("student with this email already exist");
         }
 
     }
 
 
-
-
     private static void printStudentsByLesson() {
         System.out.println("please input lesson's title");
         String title = scanner.nextLine();
-        if (lessonStorage.getLessonByTitle(title)!=null){
-           studentStorage.getStudentByLesson(title);
-        }
-        else {
+        if (lessonStorage.getLessonByTitle(title) != null) {
+            studentStorage.getStudentByLesson(title);
+        } else {
             System.out.println("We don't have such a lesson");
         }
 
@@ -162,7 +153,6 @@ public class EducationTest {
             System.out.println("Invalid, email");
         }
     }
-
 
 
     private static void printCommands() {

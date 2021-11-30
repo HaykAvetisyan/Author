@@ -27,8 +27,8 @@ public class LessonStorage {
     }
 
     public Lesson getLessonByTitle(String title) {
-        for (int i = 0; i <size ; i++) {
-            if(lessons[i].getName().equals(title)){
+        for (int i = 0; i < size; i++) {
+            if (lessons[i].getName().equals(title)) {
                 return lessons[i];
             }
         }
@@ -37,16 +37,16 @@ public class LessonStorage {
 
     public void deleteLesson(Lesson lessonByTitle) {
         for (int i = getIndex(lessonByTitle); i < size; i++) {
-            lessons[i] = lessons[i+1];
+            lessons[i] = lessons[i + 1];
             size--;
 
         }
 
     }
 
-    private int getIndex(Lesson lesson){
+    private int getIndex(Lesson lesson) {
         for (int i = 0; i < size; i++) {
-            if (lessons[i].equals(lesson)){
+            if (lessons[i].equals(lesson)) {
                 return i;
             }
         }

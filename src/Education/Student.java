@@ -1,26 +1,26 @@
 package Education;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 public class Student {
-    private String  name;
+    private String name;
     private String surname;
     private int age;
     private String phone;
     private String email;
-    private Lesson lesson;
+    private Lesson [] lessons;
 
-
-    public Student() {
-    }
-
-    public Student(String name, String surname, int age, String phone, String email, Lesson lesson) {
+    public Student(String name, String surname, int age, String phone, String email, Lesson[] lessons) {
         this.name = name;
         this.surname = surname;
         this.age = age;
         this.phone = phone;
         this.email = email;
-        this.lesson = lesson;
+        this.lessons = lessons;
+    }
+
+    public Student() {
     }
 
     public String getName() {
@@ -63,12 +63,12 @@ public class Student {
         this.email = email;
     }
 
-    public Lesson getLesson() {
-        return lesson;
+    public Lesson[] getLessons() {
+        return lessons;
     }
 
-    public void setLesson(Lesson lesson) {
-        this.lesson = lesson;
+    public void setLessons(Lesson[] lessons) {
+        this.lessons = lessons;
     }
 
     @Override
@@ -81,12 +81,14 @@ public class Student {
                 Objects.equals(surname, student.surname) &&
                 Objects.equals(phone, student.phone) &&
                 Objects.equals(email, student.email) &&
-                Objects.equals(lesson, student.lesson);
+                Arrays.equals(lessons, student.lessons);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, surname, age, phone, email, lesson);
+        int result = Objects.hash(name, surname, age, phone, email);
+        result = 31 * result + Arrays.hashCode(lessons);
+        return result;
     }
 
     @Override
@@ -97,7 +99,7 @@ public class Student {
                 ", age=" + age +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
-                ", lesson=" + lesson +
+                ", lessons=" + Arrays.toString(lessons) +
                 '}';
     }
 }
