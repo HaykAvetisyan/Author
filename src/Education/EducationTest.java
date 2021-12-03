@@ -1,21 +1,18 @@
 package Education;
 
+import Education.model.Lesson;
+import Education.model.Student;
+import Education.storage.LessonStorage;
+import Education.storage.MyDate;
+import Education.storage.StudentStorage;
+
+import java.util.Date;
 import java.util.Scanner;
 
-public class EducationTest {
+public class EducationTest implements Commands, MyDate {
     private static Scanner scanner = new Scanner(System.in);
     private static LessonStorage lessonStorage = new LessonStorage();
     private static StudentStorage studentStorage = new StudentStorage();
-
-
-    private static final String EXIT = "0";
-    private static final String ADD_LESSON = "1";
-    private static final String ADD_STUDENT = "2";
-    private static final String PRINT_STUDENTS = "3";
-    private static final String PRINT_STUDENTS_BY_LESSON = "4";
-    private static final String PRINT_LESS0NS = "5";
-    private static final String DELETE_LESSON_BY_NAME = "6";
-    private static final String DELETE_STUDENT_BY_EMAIL = "7";
 
 
     public static void main(String[] args) {
@@ -23,7 +20,7 @@ public class EducationTest {
 
         boolean isRun = true;
         while (isRun) {
-            printCommands();
+            Commands.printCommands();
             String command = scanner.nextLine();
             switch (command) {
                 case EXIT:
@@ -108,7 +105,7 @@ public class EducationTest {
                     lessons[i] = lessonStorage.getLessonByTitle(names[i]);
                 }
             }
-            Student student = new Student(name, surname, age, email, phone, lessons);
+            Student student = new Student(name, surname, age, email, phone, lessons, MyDate.printUtil(new Date()));
             studentStorage.add(student);
             System.out.println("student added");
         } else {
@@ -155,15 +152,4 @@ public class EducationTest {
     }
 
 
-    private static void printCommands() {
-        System.out.println("Please input " + EXIT + " for EXIT");
-        System.out.println("Please input " + ADD_LESSON + " for ADD_LESSON");
-        System.out.println("Please input " + ADD_STUDENT + " for ADD_STUDENT");
-        System.out.println("Please input " + PRINT_STUDENTS + " for  PRINT_STUDENTS");
-        System.out.println("Please input " + PRINT_STUDENTS_BY_LESSON + " for PRINT_STUDENTS_BY_LESSON");
-        System.out.println("Please input " + PRINT_LESS0NS + " for  PRINT_LESS0NS");
-        System.out.println("Please input " + DELETE_LESSON_BY_NAME + " for DELETE_LESSON_BY_NAME");
-        System.out.println("Please input " + DELETE_STUDENT_BY_EMAIL + " for DELETE_STUDENT_BY_EMAIL");
-
-    }
 }

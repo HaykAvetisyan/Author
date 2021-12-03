@@ -1,4 +1,6 @@
-package Education;
+package Education.storage;
+
+import Education.model.Student;
 
 public class StudentStorage {
     private Student[] students = new Student[10];

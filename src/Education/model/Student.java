@@ -1,4 +1,4 @@
-package Education;
+package Education.model;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -9,9 +9,10 @@ public class Student {
     private int age;
     private String phone;
     private String email;
-    private Lesson [] lessons;
+    private Lesson[] lessons;
+    private String date;
 
-    public Student(String name, String surname, int age, String phone, String email, Lesson[] lessons) {
+    public Student(String name, String surname, int age, String phone, String email, Lesson[] lessons, String date) {
         this.name = name;
         this.surname = surname;
         this.age = age;
@@ -71,6 +72,14 @@ public class Student {
         this.lessons = lessons;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -81,12 +90,13 @@ public class Student {
                 Objects.equals(surname, student.surname) &&
                 Objects.equals(phone, student.phone) &&
                 Objects.equals(email, student.email) &&
-                Arrays.equals(lessons, student.lessons);
+                Arrays.equals(lessons, student.lessons) &&
+                Objects.equals(date, student.date);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(name, surname, age, phone, email);
+        int result = Objects.hash(name, surname, age, phone, email, date);
         result = 31 * result + Arrays.hashCode(lessons);
         return result;
     }
@@ -100,6 +110,7 @@ public class Student {
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
                 ", lessons=" + Arrays.toString(lessons) +
+                ", date='" + date + '\'' +
                 '}';
     }
 }
