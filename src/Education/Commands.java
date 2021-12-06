@@ -10,6 +10,10 @@ public interface Commands {
      String DELETE_LESSON_BY_NAME = "6";
      String DELETE_STUDENT_BY_EMAIL = "7";
 
+
+     String LOG_IN = "1";
+     String REGISTER ="2";
+
      static void printCommands() {
         System.out.println("Please input " + EXIT + " for EXIT");
         System.out.println("Please input " + ADD_LESSON + " for ADD_LESSON");
@@ -20,5 +24,11 @@ public interface Commands {
         System.out.println("Please input " + DELETE_LESSON_BY_NAME + " for DELETE_LESSON_BY_NAME");
         System.out.println("Please input " + DELETE_STUDENT_BY_EMAIL + " for DELETE_STUDENT_BY_EMAIL");
 
+    }
+
+    static void printMainMenuCommands(){
+        System.out.println("Please input " + EXIT + " for EXIT");
+        System.out.println("Please input " + LOG_IN + " for LOGIN");
+        System.out.println("Please input " + REGISTER + " for REGISTER");
     }
 }
